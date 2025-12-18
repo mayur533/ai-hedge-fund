@@ -33,26 +33,6 @@ class TestBacktester:
         return pd.DataFrame(data)
 
     @pytest.fixture
-    def sample_signals(self):
-        """Create sample trading signals."""
-        dates = pd.date_range(start='2024-01-01', end='2024-12-31', freq='D')
-        signals = []
-        
-        for i, date in enumerate(dates):
-            # Generate random signals
-            signal = np.random.choice(['buy', 'sell', 'hold'])
-            confidence = np.random.uniform(0.3, 0.9)
-            
-            signals.append({
-                'date': date,
-                'signal': signal,
-                'confidence': confidence,
-                'ticker': 'AAPL'
-            })
-        
-        return pd.DataFrame(signals)
-
-    @pytest.fixture
     def backtester(self):
         """Create a backtester instance."""
         return Backtester(
